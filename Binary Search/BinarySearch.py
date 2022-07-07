@@ -1,65 +1,35 @@
-# def bSearchIteratively(arr,target):
-    
-#     start = 0
-#     end = len(arr)-1
-    
-
-#     while (start <= end):
-#         middle = (start+end)/2
-#         if arr[middle] == target:
-#             return True
-#         elif arr[middle] > target:
-#             end = middle-1
-#         else:
-#             start = middle+1
-    
-#     return False
 
 
-def bSearchRecursively(arr,start,end,target):
-    
-    middle = (start+end)//2
-    
+
+
+def Bsearch(list,target,start,end):
+
+    middle = int((start+end)/2)
+
     if start > end:
         return False
-    
-    if arr[middle] == target:
+
+    if list[middle] == target:
         return True
-    elif arr[middle] > target:
-        return bSearchRecursively(arr,start,middle-1,target)
+    elif list[middle] > target:
+        print(f"Searching from {list[start]} to {list[middle]}")
+        return Bsearch(list,target,start,middle)
     else:
-        return bSearchRecursively(arr,middle+1,end,target)
-
-
-def orderDef(arr):
-    
-    if not arr:
-        print("EMPTY ARRAY")
+        print(f"Searching from {list[middle+1]} to {list[end]}")
+        return Bsearch(list,target,middle+1,end)
     
 
-    start = 0
-    end = len(arr)-1
-    
-    if arr[start] <= arr[end]:
-        print("SORTED INCREASING")
-    else:
-        print("SORTED DECREASING")
-
-    
-    
-    
 def main():
-    
+
     list1 = [0,1,2,3,4,5,6,7,8]
-    list2 = [8,7,6,5,4,3,2,1,0]
-    #print(bSearchIteratively(list1,2))
-    #print(bSearchRecursively(list1,0,8,0))
-    #print(bSearchRecursively(list1,0,8,222))
-    orderDef(list1)
-    orderDef(list2)
-    #print("Hello")
-    
+    length = len(list1)
+    print(Bsearch(list1,0,0,length-1))
+    print(Bsearch(list1,8,0,length-1))
+
+
+
+
+
+
 if __name__ == "__main__":
     main()
-
-
